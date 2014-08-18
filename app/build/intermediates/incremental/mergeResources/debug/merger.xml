@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res" >
+            <file
+                name="actionbar_background"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-hdpi/actionbar_background.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="minus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-hdpi/minus.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="plus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-hdpi/plus.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="actionbar_background"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-mdpi/actionbar_background.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="minus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-mdpi/minus.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="plus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-mdpi/plus.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="actionbar_background"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xhdpi/actionbar_background.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="minus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xhdpi/minus.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="plus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xhdpi/plus.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="actionbar_background"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xxhdpi/actionbar_background.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="minus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xxhdpi/minus.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="plus"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/drawable-xxhdpi/plus.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_my"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/activity_my.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="courses_row"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/courses_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="create_a_grade"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/create_a_grade.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="create_a_score"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/create_a_score.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="createaclass"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/createaclass.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="grade_layout"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/grade_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="grades_row"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/grades_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="score_layout"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/score_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="scores_row"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/scores_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main_activity_actions"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/menu/main_activity_actions.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="my"
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/menu/my.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="menu_insert3" >Add Score
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="menu_insert" >Add Course
+                </string>
+                <string name="app_name" >Grade Calculator
+                </string>
+                <string name="submit3" >Submit
+                </string>
+                <string name="submit2" >Submit
+                </string>
+                <string name="menu_delete" >Delete Course
+                </string>
+                <string name="submit" >Submit
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+                <string name="menu_insert2" >Add Grade
+                </string>
+            </file>
+            <file
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- Customize your theme here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/values/themes.xml"
+                qualifiers="" >
+
+                <style
+                    name="MyActionBar"
+                    parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse" >
+                    <item name="android:background">
+@drawable/actionbar_background
+                    </item>
+                </style>
+
+                <style
+                    name="CustomActionBarTheme"
+                    parent="@android:style/Theme.Holo.Light.DarkActionBar" >
+                    <item name="android:actionBarStyle">
+@style/MyActionBar
+                    </item>
+                </style>
+            </file>
+            <file
+                path="/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/values-w820dp/dimens.xml"
+                qualifiers="w820dp-v13" >
+                <dimen name="activity_horizontal_margin" >64dp
+                </dimen>
+            </file>
+        </source>
+        <source path="/Users/home/Documents/Projects/GradeCalculator/app/build/generated/res/rs/debug" />
+        <source path="/Users/home/Documents/Projects/GradeCalculator/app/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/home/Documents/Projects/GradeCalculator/app/src/debug/res" />
+    </dataSet>
+
+</merger>
