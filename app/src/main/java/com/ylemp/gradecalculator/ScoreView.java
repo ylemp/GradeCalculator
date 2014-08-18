@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,6 +29,9 @@ public class ScoreView extends ListActivity {
     public ArrayList<Integer> scoresList = new ArrayList();
     public Double average = 0.0;
     public Double sum = 0.0;
+    private ProgressBar progressBar;
+    private int progressStatus = 0;
+    private String s = new String();
 
 
     @Override
@@ -55,6 +62,17 @@ public class ScoreView extends ListActivity {
             sum = sum + scoresList.get(i);
         }
         average = sum/scoresList.size();
+
+        s = average.toString() + "%";
+
+        TextView tv1 = (TextView) findViewById(R.id.score_per);
+        tv1.setText(s);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressStatus = average.intValue();
+        progressBar.setProgress(progressStatus);
+
+
     }
 
     //update with scores instead of grades

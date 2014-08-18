@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <ListView android:id="@+id/android:list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="383dp"/>
     <TextView android:id="@+id/android:empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NO SCORES"/>
+    <TextView android:id="@+id/score_per"
+        android:layout_below="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="32sp"/>
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="273dp"
+        android:id="@+id/progressBar"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/score_per"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="false"/>
 
 
-</LinearLayout>
+
+</RelativeLayout>
