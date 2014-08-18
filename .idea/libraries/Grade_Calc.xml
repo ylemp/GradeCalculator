@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Grade Calc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/Grade Calc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
