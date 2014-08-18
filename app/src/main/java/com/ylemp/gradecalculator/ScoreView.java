@@ -4,11 +4,13 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleCursorAdapter;
@@ -32,6 +34,8 @@ public class ScoreView extends ListActivity {
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private String s = new String();
+    private static final int DELETE_ID = Menu.FIRST + 1;
+
 
 
     @Override
@@ -57,7 +61,7 @@ public class ScoreView extends ListActivity {
         fillDataById(mGradeId);
         registerForContextMenu(getListView());
 
-        scoresList = mDbHelper.fetchAllScoresIntoAL();
+        scoresList = mDbHelper.fetchAllScoresIntoAL(mGradeId);
         for(int i=0; i<scoresList.size(); i++){
             sum = sum + scoresList.get(i);
         }
@@ -114,13 +118,19 @@ public class ScoreView extends ListActivity {
         }
         return super.onMenuItemSelected(featureId, item);
     }
-    
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(1, DELETE_ID, 0, "DELETE SCORE");
+    }
+
     //edit this method to change what happens on click
     protected void onListItemClick(ListView l, View v, int position, long id){
         super.onListItemClick(l, v, position, id);
-        Intent i = new Intent(this, ScoreView.class);
+        Intent i = new Intent(this, CreateScore.class);
 
-        //attaches course_id to the intent which is then pulled via getSerializable
         i.putExtra(CourseDbAdapter.KEY_ID, id);
         startActivity(i);
     }
@@ -129,6 +139,20 @@ public class ScoreView extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         fillDataById(mGradeId);
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case DELETE_ID:
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                mDbHelper.deleteScore(info.id);
+                //fillData();
+                fillDataById(mGradeId);
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 }
 

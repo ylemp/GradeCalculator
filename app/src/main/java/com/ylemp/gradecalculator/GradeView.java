@@ -8,6 +8,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -37,6 +38,8 @@ public class GradeView extends ListActivity {
             }
 
         //gets the courses row id to bind to the grades course_id field
+        //NO
+        //mRowId is the row number of the course that was clicked on
         mRowId = (savedInstanceState == null) ? null :
                 (Long) savedInstanceState.getSerializable(CourseDbAdapter.KEY_ID);
         if (mRowId == null) {
@@ -45,7 +48,9 @@ public class GradeView extends ListActivity {
                     : null;
         }
 
-        fillDataById(mRowId);
+        if(mRowId != null) {
+            fillDataById(mRowId);
+        }
         registerForContextMenu(getListView());
     }
 
@@ -115,7 +120,8 @@ public class GradeView extends ListActivity {
         Intent i = new Intent(this, ScoreView.class);
 
         //attaches course_id to the intent which is then pulled via getSerializable
-        i.putExtra(CourseDbAdapter.KEY_COURSE_ID, id);
+        //was course_id
+        i.putExtra(CourseDbAdapter.KEY_ID, id);
         startActivity(i);
     }
 
@@ -123,5 +129,18 @@ public class GradeView extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         fillDataById(mRowId);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case DELETE_ID:
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                mDbHelper.deleteGrade(info.id);
+                //fillData();
+                fillDataById(mRowId);
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 }

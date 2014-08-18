@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Created by home on 8/10/14.
- * TODO finish implementing the new grades with FK support, read query api, have gradesview only populate the coures grades and not all grades.
+ * TODO find scores bug, the bug is either fetching the scores wrong, or creating them wrong
  */
 
 
@@ -55,7 +55,7 @@ public class CourseDbAdapter {
     private static final String CREATE_TABLE_COURSE =
             "CREATE TABLE " + TABLE_COURSE
             + "("
-            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + KEY_COURSE + " TEXT"
             + ")";
 
@@ -64,7 +64,7 @@ public class CourseDbAdapter {
     private static final String CREATE_TABLE_GRADES =
             "CREATE TABLE " + TABLE_GRADES
                     + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY,"
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + KEY_GRADE + " TEXT,"
                     + KEY_GRADE_WEIGHT + " INTEGER,"
                     + KEY_COURSE_ID + " INTEGER"
@@ -74,14 +74,14 @@ public class CourseDbAdapter {
     private static final String CREATE_TABLE_SCORES =
             "CREATE TABLE " + TABLE_SCORES
             + "("
-            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + KEY_SCORE + " INTEGER,"
             + KEY_GRADE_ID + " INTEGER"
             + ")";
 
 
 
-    // nested class DatabseHelper
+    // nested class DatabaseHelper
     public static class DatabaseHelper extends SQLiteOpenHelper{
 
 
@@ -223,7 +223,7 @@ public class CourseDbAdapter {
     }
 
     public boolean deleteScore(long rowId){
-        return true;
+        return mDb.delete(TABLE_SCORES, KEY_ID + "=" + rowId, null) > 0;
     }
 
     //public Cursor fetchAllScores(){}
@@ -235,10 +235,12 @@ public class CourseDbAdapter {
         return mDb.rawQuery("select * from scores where grade_id =" + s, null);
     }
 
-    public ArrayList<Integer> fetchAllScoresIntoAL(){
+    public ArrayList<Integer> fetchAllScoresIntoAL(Long rowId){
         ArrayList<Integer> a = new ArrayList();
-       Cursor c = mDb.query(TABLE_SCORES, new String[] {KEY_SCORE}, null, null, null, null, null);
-       if (c.moveToFirst()){
+        String s = String.valueOf(rowId);
+        //Cursor c = mDb.query(TABLE_SCORES, new String[] {KEY_SCORE}, null, null, null, null, null);
+        Cursor c = mDb.rawQuery("select * from scores where grade_id =" + s, null);
+        if (c.moveToFirst()){
            do{
                a.add(c.getInt(c.getColumnIndexOrThrow(KEY_SCORE)));
            } while(c.moveToNext());

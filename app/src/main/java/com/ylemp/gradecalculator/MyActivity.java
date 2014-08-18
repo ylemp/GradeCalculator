@@ -85,7 +85,6 @@ public class MyActivity extends ListActivity {
 
         //attaches course_id to the intent which is then pulled via getSerializable
         i.putExtra(CourseDbAdapter.KEY_ID, id);
-        //startActivityForResult(i, ACTIVITY_EDIT);
         startActivity(i);
     }
 
@@ -94,5 +93,17 @@ public class MyActivity extends ListActivity {
          super.onActivityResult(requestCode, resultCode, intent);
          fillData();
         }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case DELETE_ID:
+                AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+                mDbHelper.deleteCourse(info.id);
+                fillData();
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
 
 }
