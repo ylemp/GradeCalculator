@@ -11,7 +11,10 @@ import java.util.ArrayList;
 
 /**
  * Created by home on 8/10/14.
- * TODO find scores bug, the bug is either fetching the scores wrong, or creating them wrong
+ * TODO add final grades
+ * if you create a current grade key for grades
+ * then you can pull them easily and calculate the current grade for the class easily
+ * current_grade * weight
  */
 
 

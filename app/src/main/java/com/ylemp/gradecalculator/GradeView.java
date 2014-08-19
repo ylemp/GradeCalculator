@@ -13,11 +13,22 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by home on 8/11/14.
  * List view that shows the grades for a class
  * Called after a course is clicked
+ */
+
+/**
+ * % calculating algorithm
+ * create a SQL key to hold the current running average for each grade
+ * put average in it
+ * will need to mult the the Weight by the average.
+ * Create a new field in course that holds the points earned for all grades
+ * get running average by adding up the points for each grade
+ * might not even need the field in courses
  */
 public class GradeView extends ListActivity {
     private CourseDbAdapter mDbHelper;
@@ -52,7 +63,10 @@ public class GradeView extends ListActivity {
             fillDataById(mRowId);
         }
         registerForContextMenu(getListView());
+
     }
+
+    //private ArrayList getAverages(Long rowId){}
 
     private void fillData(){
         Cursor gradesCursor = mDbHelper.fetchAllGrades();
