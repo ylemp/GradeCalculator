@@ -50,7 +50,7 @@
         <activity
             android:name=".ScoreView"
             android:label="Scores"
-            android:parentActivityName=".GradeView" >
+            android:parentActivityName=".MyActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".GradeView" />
