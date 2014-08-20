@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by home on 8/17/14.
@@ -17,6 +18,7 @@ public class CreateScore extends Activity {
     private Long mRowId;
     private Long mGradeId;
     private CourseDbAdapter mDbHelper;
+    private ArrayList<String> DeBug2 = new ArrayList<String>();
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,6 @@ public class CreateScore extends Activity {
 
         if (mRowId == null){
             long id = mDbHelper.createScore(score, mGradeId);
-
         }
     }
 }

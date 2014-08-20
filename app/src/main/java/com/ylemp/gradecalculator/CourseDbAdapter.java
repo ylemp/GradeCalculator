@@ -129,6 +129,26 @@ public class CourseDbAdapter {
 
     // ------------------------ "course" table methods ----------------//
 
+    //course debug
+    //huge success
+    public ArrayList<String> courseDeBug(){
+        ArrayList<String> DeBug = new ArrayList<String>();
+
+
+        Cursor c = mDb.query(TABLE_COURSE, new String[] {KEY_ID, KEY_COURSE},
+                null, null, null, null, null);
+
+        if (c.moveToFirst()){
+            do{
+                DeBug.add(
+                    String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_ID)))
+                    + " " + c.getString(c.getColumnIndexOrThrow(KEY_COURSE))
+                );
+            } while(c.moveToNext());
+        }
+
+        return DeBug;
+    }
 
     public long createCourse(String course_name){
         ContentValues initialValues = new ContentValues();
@@ -166,6 +186,28 @@ public class CourseDbAdapter {
     }
 
     // ------------------------ "grades" table methods ----------------//
+
+    //grade debug
+    public ArrayList<String> gradeDeBug(){
+        ArrayList<String> DeBug = new ArrayList<String>();
+
+        Cursor c = mDb.query(TABLE_GRADES, new String[]
+                        {KEY_ID, KEY_GRADE, KEY_GRADE_WEIGHT, KEY_COURSE_ID},
+                null, null, null, null, null);
+
+        if (c.moveToFirst()){
+            do{
+                DeBug.add(
+                    String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_ID)))
+                    + " " + c.getString(c.getColumnIndexOrThrow(KEY_GRADE))
+                    + " " + String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_GRADE_WEIGHT)))
+                    + " " + String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_COURSE_ID)))
+                );
+            } while(c.moveToNext());
+        }
+
+        return DeBug;
+    }
 
     public long createGrade(String grade_name, Integer weight, Long course_id){
         ContentValues initialValues = new ContentValues();
@@ -214,8 +256,58 @@ public class CourseDbAdapter {
         return mDb.update(TABLE_GRADES, args, KEY_ID + "=" + rowId, null) > 0;
     }
 
+    public ArrayList<Integer> getWeights(Long rowId){
+        ArrayList<Integer> a = new ArrayList();
+        String s = String.valueOf(rowId);
+        Cursor c = mDb.rawQuery("select * from grades where course_id =" + s, null);
+
+        if (c.moveToFirst()){
+            do{
+                a.add(c.getInt(c.getColumnIndexOrThrow(KEY_GRADE_WEIGHT)));
+            } while(c.moveToNext());
+        }
+        return a;
+    }
+
+    public ArrayList<Long> getGradeIds(Long rowId){
+        ArrayList<Long> a = new ArrayList();
+        String s = String.valueOf(rowId);
+        Cursor c = mDb.rawQuery("select * from grades where course_id =" + s, null);
+
+        if (c.moveToFirst()){
+            do{
+                a.add(c.getLong(c.getColumnIndexOrThrow(KEY_ID)));
+            } while(c.moveToNext());
+        }
+
+        return a;
+    }
+
 
     // ------------------------ "scores" table methods ----------------//
+
+
+
+    //score debug
+    public ArrayList<String> scoreDeBug(){
+        ArrayList<String> DeBug = new ArrayList<String>();
+
+        Cursor c = mDb.query(TABLE_SCORES, new String[]
+                        {KEY_ID, KEY_SCORE, KEY_GRADE_ID},
+                null, null, null, null, null);
+
+        if (c.moveToFirst()){
+            do{
+                DeBug.add(
+                        String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_ID)))
+                        + " " + String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_SCORE)))
+                        + " " + String.valueOf(c.getInt(c.getColumnIndexOrThrow(KEY_GRADE_ID)))
+                );
+            } while(c.moveToNext());
+        }
+
+        return DeBug;
+    }
 
     public long createScore(Integer score_value, long grade_id){
         ContentValues initialValues = new ContentValues();
@@ -239,10 +331,14 @@ public class CourseDbAdapter {
     }
 
     public ArrayList<Integer> fetchAllScoresIntoAL(Long rowId){
+        /**
+         * RowId is a reference to the scores parent grade
+         * This allows you to get all the
+         */
         ArrayList<Integer> a = new ArrayList();
         String s = String.valueOf(rowId);
-        //Cursor c = mDb.query(TABLE_SCORES, new String[] {KEY_SCORE}, null, null, null, null, null);
         Cursor c = mDb.rawQuery("select * from scores where grade_id =" + s, null);
+
         if (c.moveToFirst()){
            do{
                a.add(c.getInt(c.getColumnIndexOrThrow(KEY_SCORE)));

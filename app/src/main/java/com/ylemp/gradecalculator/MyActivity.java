@@ -5,20 +5,24 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MyActivity extends ListActivity {
     private static final int INSERT_ID = Menu.FIRST;
     private CourseDbAdapter mDbHelper;
     private static final int DELETE_ID = Menu.FIRST + 1;
+    private ArrayList<String> DeBug = new ArrayList<String>();
+    private ArrayList<String> DeBug1 = new ArrayList<String>();
+    private ArrayList<String> DeBug2 = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,27 @@ public class MyActivity extends ListActivity {
         }
         fillData();
         registerForContextMenu(getListView());
+
+
+        /**
+         * DeBug ArrayList
+         * {KEY_ID, KEY_COURSE}
+         */
+
+        DeBug = mDbHelper.courseDeBug();
+
+
+        /**
+         * DeBug ArrayList
+         * {KEY_ID, KEY_GRADE, KEY_GRADE_WEIGHT, KEY_COURSE_ID}
+         */
+        DeBug1 = mDbHelper.gradeDeBug();
+
+        /**
+         * DeBug ArrayList
+         * {KEY_ID, KEY_SCORE, KEY_GRADE_ID}
+         */
+        DeBug2 = mDbHelper.scoreDeBug();
     }
 
     private void fillData(){
@@ -78,7 +103,7 @@ public class MyActivity extends ListActivity {
         menu.add(1, DELETE_ID, 0, "DELETE COURSE");
      }
 
-    //edit this method to change what happens on click
+    //edit this method to change what happens on click on a course in the List
     protected void onListItemClick(ListView l, View v, int position, long id){
         super.onListItemClick(l, v, position, id);
         Intent i = new Intent(this, GradeView.class);

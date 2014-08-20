@@ -8,8 +8,6 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -28,13 +26,15 @@ public class ScoreView extends ListActivity {
     private CourseDbAdapter mDbHelper;
     private static final int INSERT_ID = Menu.FIRST;
     private Long mGradeId;
-    public ArrayList<Integer> scoresList = new ArrayList();
     public Double average = 0.0;
     public Double sum = 0.0;
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private String s = new String();
     private static final int DELETE_ID = Menu.FIRST + 1;
+    public ArrayList<Integer> scoresList = new ArrayList();
+    private ArrayList<String> DeBug = new ArrayList<String>();
+    private ArrayList<String> DeBug2 = new ArrayList<String>();
 
 
 
@@ -61,11 +61,14 @@ public class ScoreView extends ListActivity {
         fillDataById(mGradeId);
         registerForContextMenu(getListView());
 
+        //pass in grades_id to get all scores for each grade
         scoresList = mDbHelper.fetchAllScoresIntoAL(mGradeId);
         for(int i=0; i<scoresList.size(); i++){
             sum = sum + scoresList.get(i);
         }
         average = sum/scoresList.size();
+        //average = Double.valueOf(Math.round(average));
+        average = Double.valueOf(Math.round(average*100.00)/100.00);
 
         s = average.toString() + "%";
 
@@ -77,10 +80,15 @@ public class ScoreView extends ListActivity {
         progressBar.setProgress(progressStatus);
 
 
+
+
+
+
     }
 
     //update with scores instead of grades
     private void fillDataById(long row_id){
+        DeBug2 = mDbHelper.scoreDeBug();
         //populates the list view
         Cursor scoreCursor = mDbHelper.fetchAllScoresByFK(row_id);
         startManagingCursor(scoreCursor);

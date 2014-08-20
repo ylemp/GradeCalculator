@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,9 +36,18 @@ import java.util.ArrayList;
 public class GradeView extends ListActivity {
     private CourseDbAdapter mDbHelper;
     private static final int INSERT_ID = Menu.FIRST;
-    private Long mRowId;
     private static final int DELETE_ID = Menu.FIRST + 1;
-
+    private Long mRowId;
+    private Double grade = 0.0;
+    private String s = new String();
+    private ProgressBar progressBar;
+    private int progressStatus = 0;
+    private ArrayList<Integer> weightList = new ArrayList<Integer>();
+    private ArrayList<Long> gradeIdList = new ArrayList<Long>();
+    private ArrayList<String> DeBug1 = new ArrayList<String>();
+    private ArrayList<Double> scoresList = new ArrayList();
+    private Integer weightTotal = 0;
+    private double total = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +60,7 @@ public class GradeView extends ListActivity {
                 e.printStackTrace();
             }
 
-        //gets the courses row id to bind to the grades course_id field
-        //NO
-        //mRowId is the row number of the course that was clicked on
+        //gets the courses_id
         mRowId = (savedInstanceState == null) ? null :
                 (Long) savedInstanceState.getSerializable(CourseDbAdapter.KEY_ID);
         if (mRowId == null) {
@@ -64,9 +74,60 @@ public class GradeView extends ListActivity {
         }
         registerForContextMenu(getListView());
 
+        weightList = mDbHelper.getWeights(mRowId);
+        gradeIdList = mDbHelper.getGradeIds(mRowId);
+        DeBug1 = mDbHelper.gradeDeBug();
+
+        for(int i=0; i<weightList.size(); i++){
+            weightTotal = weightTotal + weightList.get(i);
+        }
+
+        if (weightTotal != 100){
+            Toast.makeText(getApplicationContext(),
+                    "Total Weight is not 100, current total weight is " + weightTotal.toString(),
+                    Toast.LENGTH_LONG).show();
+        }
+
+        for(int i=0; i<gradeIdList.size(); i++){
+            total = getAverage(gradeIdList.get(i));
+            total = total * weightList.get(i);
+            scoresList.add(total);
+        }
+
+        for(int j=0; j<scoresList.size(); j++){
+            grade = grade + scoresList.get(j);
+        }
+        grade = Double.valueOf(Math.round(grade*100.00)/100.00);
+        s = grade.toString() + "%";
+
+        TextView tv1 = (TextView) findViewById(R.id.grade_per);
+        tv1.setText(s);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressStatus = grade.intValue();
+        progressBar.setProgress(progressStatus);
+
     }
 
-    //private ArrayList getAverages(Long rowId){}
+    private Double getAverage(Long mGradeId){
+        Double average;
+        Double sum = 0.0;
+        ArrayList<Integer> a;
+
+        a = mDbHelper.fetchAllScoresIntoAL(mGradeId);
+
+        if (a.size() == 0){
+            return 0.0;
+        }
+
+        for(int i=0; i<a.size(); i++){
+            sum = sum + a.get(i);
+        }
+        average = sum/a.size();
+        average = average/100;
+
+        return average;
+    }
 
     private void fillData(){
         Cursor gradesCursor = mDbHelper.fetchAllGrades();
@@ -133,8 +194,7 @@ public class GradeView extends ListActivity {
         super.onListItemClick(l, v, position, id);
         Intent i = new Intent(this, ScoreView.class);
 
-        //attaches course_id to the intent which is then pulled via getSerializable
-        //was course_id
+        //attaches grade_id to the intent which is then pulled via getSerializable
         i.putExtra(CourseDbAdapter.KEY_ID, id);
         startActivity(i);
     }

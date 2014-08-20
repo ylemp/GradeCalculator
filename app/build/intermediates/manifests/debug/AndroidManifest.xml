@@ -51,7 +51,7 @@
         <activity
             android:name="com.ylemp.gradecalculator.ScoreView"
             android:label="Scores"
-            android:parentActivityName="com.ylemp.gradecalculator.GradeView" >
+            android:parentActivityName="com.ylemp.gradecalculator.MyActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".GradeView" />
