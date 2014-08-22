@@ -24,16 +24,16 @@
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-    </style>
+        android:fontFamily="sans-serif-light"</style>
     <!-- From: file:/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/values/themes.xml -->
     <eat-comment />
 
     <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
-    </style>
+        android:fontFamily="sans-serif-light"</style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@drawable/actionbar_background</item>
-    </style>
+        android:fontFamily="sans-serif-light"</style>
 
 </resources>

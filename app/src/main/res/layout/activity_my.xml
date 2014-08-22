@@ -5,9 +5,10 @@
 
     <ListView android:id="@+id/android:list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"/>
     <TextView android:id="@+id/android:empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NO COURSES"/>
+        android:text="NO COURSES" />
 </LinearLayout>

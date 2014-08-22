@@ -5,20 +5,19 @@
 
     <ListView android:id="@+id/android:list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="383dp"/>
     <TextView android:id="@+id/android:empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NO GRADES"/>
+        android:text="NO GRADES" />
 
     <TextView android:id="@+id/grade_per"
         android:layout_below="@android:id/list"
-        android:layout_above="@+id/grade_per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_gravity="bottom"
-        android:textSize="32sp"/>
+        android:textSize="44sp"
+        android:fontFamily="sans-serif-light"/>
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="250dp"

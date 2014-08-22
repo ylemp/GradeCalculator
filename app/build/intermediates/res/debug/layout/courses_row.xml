@@ -2,5 +2,7 @@
 <TextView android:id="@+id/text1" xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="32sp"/>
-<!-- From: file:/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/courses_row.xml -->
+    android:textSize="44sp"
+    android:fontFamily="sans-serif-light"/>
+
+    <!-- From: file:/Users/home/Documents/Projects/GradeCalculator/app/src/main/res/layout/courses_row.xml -->

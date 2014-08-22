@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <ListView android:id="@+id/android:list"
         android:layout_width="wrap_content"
         android:layout_height="383dp"/>
@@ -18,7 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="32sp"/>
+        android:textSize="44sp"
+        android:fontFamily="sans-serif-light"/>
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="250dp"

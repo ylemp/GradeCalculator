@@ -179,6 +179,7 @@
                     parent="android:Theme.Holo.Light.DarkActionBar" >
 
                     <!-- Customize your theme here. -->
+        android:fontFamily="sans-serif-light"
                 </style>
             </file>
             <file
@@ -191,6 +192,7 @@
                     <item name="android:actionBarStyle">
 @style/MyActionBar
                     </item>
+        android:fontFamily="sans-serif-light"
                 </style>
 
                 <style
@@ -199,6 +201,7 @@
                     <item name="android:background">
 @drawable/actionbar_background
                     </item>
+        android:fontFamily="sans-serif-light"
                 </style>
             </file>
             <file
