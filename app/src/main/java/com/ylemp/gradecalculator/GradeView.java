@@ -77,7 +77,7 @@ public class GradeView extends ListActivity {
         if (weightTotal != 100 && weightTotal != 0){
             Toast.makeText(getApplicationContext(),
                     "Total Weight is not 100, current total weight is " + weightTotal.toString(),
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }
 
         for(int i=0; i<gradeIdList.size(); i++){
